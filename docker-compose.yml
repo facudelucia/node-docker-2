@@ -2,8 +2,9 @@ version: "3"
 
 services: 
   nginx:
+    image: nginx:stable-alpine
     ports:
-      - "80:80"
+      - "3000:80"
   web:
     container_name: exampleapp
     restart: always
