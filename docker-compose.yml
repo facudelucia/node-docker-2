@@ -1,6 +1,9 @@
 version: "3"
 
 services: 
+  nginx:
+    ports:
+      - "80:80"
   web:
     container_name: exampleapp
     restart: always
