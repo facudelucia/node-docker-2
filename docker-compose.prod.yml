@@ -1,0 +1,29 @@
+version: "3"
+services:
+  nginx:
+    ports:
+      - "80:80" 
+  node-app:
+    deploy:
+      replicas: 8
+      restart_policy: 
+        condition: any
+      update_config:
+        parallelism: 2
+        delay: 15s
+    build:
+      context: .
+      args:
+        NODE_ENV: production
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=production
+      - MONGO_USER=facudelucia
+      - MONGO_PASSWORD=123456
+    command: node index.js
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=facudelucia
+      - MONGO_INITDB_ROOT_PASSWORD=123456
