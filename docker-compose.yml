@@ -1,16 +1,12 @@
 version: "3"
 
 services: 
-  nginx:
-    image: nginx:stable-alpine
-    ports:
-      - "4000:80"
   web:
     container_name: exampleapp
     restart: always
     build: .
     ports:
-      - "3000:4000"
+      - "8888:8888" 
     links:
       - mongo
     volumes:
@@ -22,3 +18,9 @@ services:
       - "27018:27017"
     logging:
       driver: none
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80" 
+    depends_on:
+      - web
