@@ -4,13 +4,13 @@ services:
   nginx:
     image: nginx:stable-alpine
     ports:
-      - "5000:80"
+      - "80:80"
   web:
     container_name: exampleapp
     restart: always
     build: .
     ports:
-      - "5000:3000"
+      - "3000:3000"
     links:
       - mongo
     volumes:
