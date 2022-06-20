@@ -1,5 +1,7 @@
 FROM node:14
 
+RUN npm install --global nodemon
+
 RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
